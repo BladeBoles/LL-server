@@ -35,3 +35,5 @@ function makeCurrentlyReadingArray () {
     }
   ];
 }
+
+module.exports = { makeCurrentlyReadingArray };
