@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/currently-reading', (req, res) => {
-  res.json(testGet);
+  res.send(testGet);
 });
 
 app.use(function errorHandler(error, req, res, next) {
