@@ -1,10 +1,8 @@
 const CurrentlyReadingArray = require ('../src/fixtures');
 
 const LexicalService = {
-  getAllCurrentlyReading() {
-    let exampleCurrentlyReading = CurrentlyReadingArray.makeCurrentlyReadingArray();
-    return `Everything you are currently reading: ${exampleCurrentlyReading}`;
-    
+  getAllCurrentlyReading(knex) {
+    return knex.select('*').from('currently_reading');
   }
 };
 
