@@ -1,8 +1,26 @@
-const CurrentlyReadingArray = require ('../src/fixtures');
-
 const LexicalService = {
   getAllCurrentlyReading(knex) {
     return knex.select('*').from('currently_reading');
+  },
+
+  getById(knex, id) {
+    return knex.from('currently_reading').select('*').where('id', id).first();
+  },
+
+  addNewCurrentlyReading(knex, newItem) {
+    return knex
+      .insert(newItem)
+      .into('currently_reading')
+      .returning('*')
+      .then(rows => {
+        return rows[0];
+      });
+  },
+
+  deleteItem(knex, id) {
+    return knex('currently-reading')
+      .where({ id })
+      .delete();
   }
 };
 

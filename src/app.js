@@ -61,26 +61,7 @@ app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
-app.get('/api/currently-reading', (req, res, next) => {
-  const knexInstance = req.app.get('db');
-  LexicalService.getAllCurrentlyReading(knexInstance)
-    .then(results => {
-      res.json(results);
-    })
-    .catch(next);
-});
-
-app.post('/api/currently-reading', jsonParser, (req, res, next) => {
-  console.log(req.body);
-  const { current_progress = 50, date_started, media_name, media_type } = req.body;  
-  res.status(201).send({
-    current_progress,
-    date_started,
-    media_name,
-    media_type,
-    id: 42
-  });
-});
+app.use('/api/currently-reading', lexicalRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
