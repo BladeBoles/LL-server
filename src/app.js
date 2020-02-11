@@ -70,11 +70,10 @@ app.get('/api/currently-reading', (req, res, next) => {
     .catch(next);
 });
 
-app.post('/api/currently-reading', (req, res, next) => {
-  const { current_progress = 50, date_started, media_name, media_type } = req.body;
-  const newItem = {...req.body};
-  console.log(newItem);
-  res.status(201).json({
+app.post('/api/currently-reading', jsonParser, (req, res, next) => {
+  console.log(req.body);
+  const { current_progress = 50, date_started, media_name, media_type } = req.body;  
+  res.status(201).send({
     current_progress,
     date_started,
     media_name,
