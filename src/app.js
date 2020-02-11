@@ -10,6 +10,7 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 
 const app = express();
+const jsonParser = express.json();
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
@@ -67,6 +68,19 @@ app.get('/api/currently-reading', (req, res, next) => {
       res.json(results);
     })
     .catch(next);
+});
+
+app.post('/api/currently-reading', (req, res, next) => {
+  const { current_progress = 50, date_started, media_name, media_type } = req.body;
+  const newItem = {...req.body};
+  console.log(newItem);
+  res.status(201).json({
+    current_progress,
+    date_started,
+    media_name,
+    media_type,
+    id: 42
+  });
 });
 
 app.use(function errorHandler(error, req, res, next) {
