@@ -18,7 +18,7 @@ const LexicalService = {
   },
 
   deleteItem(knex, id) {
-    return knex('currently-reading')
+    return knex('currently_reading')
       .where({ id })
       .delete();
   }

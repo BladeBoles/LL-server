@@ -17,10 +17,9 @@ lexicalRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    console.log(req.body);
-    const { current_progress = 50, date_started, media_name, media_type, author='none', media_url='none', notes='none' } = req.body;  
+    const { current_progress = 50, date_started, media_name, media_type, author='', media_url='', notes='' } = req.body;  
 
-    const newItem = { current_progress, date_started, media_name, media_type };
+    const newItem = { current_progress, date_started, media_name, media_type, author, media_url, notes };
 
     LexicalService.addNewCurrentlyReading(
       req.app.get('db'),
@@ -32,7 +31,10 @@ lexicalRouter
           .json(item);
       })
       .catch(next);
-  })
+  });
+//Probably need to move this to /:currently_id
+lexicalRouter
+  .route('/:currently_id')
   .delete((req, res, next) => {
     const { currently_id } = req.params;
     LexicalService.deleteItem(
@@ -42,7 +44,6 @@ lexicalRouter
       .then(numRowsAffected => {
         res.status(204).end();
       })
-      .catch(next)
+      .catch(next);
   });
-
 module.exports = lexicalRouter;
