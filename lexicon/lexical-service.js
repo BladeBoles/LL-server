@@ -22,6 +22,17 @@ const LexicalService = {
     return knex('currently_reading')
       .where({ id })
       .delete();
+  },
+
+  addNewUser(knex, newUser) {
+    console.log(newUser);
+    return knex
+      .insert(newUser)
+      .into('profiles')
+      .returning('*')
+      .then(rows => {
+        return rows[0];
+      });
   }
 };
 

@@ -1,10 +1,16 @@
-INSERT INTO profiles (user_login, user_password)
+INSERT INTO profiles (firstname, lastname, email, user_login, user_password)
 VALUES
 (
+    'Fred',
+    'Smith',
+    'fred.smith@aol.com',
     'fred',
     'password1'
 ),
 (
+    'Billy',
+    'TheBlueRanger',
+    'rueblanger@gmail.com',
     'user2',
     'password2'
 );

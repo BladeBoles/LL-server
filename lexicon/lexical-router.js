@@ -6,7 +6,7 @@ const lexicalRouter = express.Router();
 const jsonParser = express.json();
 
 lexicalRouter
-  .route('/')
+  .route('/currently-reading')
   .get((req, res, next) => {
     LexicalService.getAllCurrentlyReading(
       req.app.get('db')
@@ -34,7 +34,7 @@ lexicalRouter
   });
 
 lexicalRouter
-  .route('/:currently_id')
+  .route('/currently-reading/:currently_id')
   .delete((req, res, next) => {
     const { currently_id } = req.params;
     LexicalService.deleteItem(
@@ -46,4 +46,25 @@ lexicalRouter
       })
       .catch(next);
   });
+
+lexicalRouter
+  .route('/new-user')
+  .post(jsonParser, (req, res, next) => {
+    const { firstname, lastname, email, user_login, user_password } = req.body;  
+
+    const newUser = { firstname, lastname, email, user_login, user_password };
+
+    LexicalService.addNewUser(
+      req.app.get('db'),
+      newUser
+    )
+      .then(item => {
+        res
+          .status(201)
+          .json(item);
+      })
+      .catch(next);
+  });
+
+
 module.exports = lexicalRouter;
