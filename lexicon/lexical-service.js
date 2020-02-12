@@ -8,6 +8,7 @@ const LexicalService = {
   },
 
   addNewCurrentlyReading(knex, newItem) {
+    console.log(newItem);
     return knex
       .insert(newItem)
       .into('currently_reading')

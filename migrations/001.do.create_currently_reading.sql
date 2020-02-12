@@ -5,7 +5,7 @@ CREATE TABLE currently_reading (
   media_url TEXT, 
   current_progress INTEGER DEFAULT 0 NOT NULL,
   notes TEXT,
-  finished BOOLEAN DEFAULT false,
+  finished BOOLEAN,
   media_type TEXT NOT NULL,
   date_started DATE DEFAULT now() NOT NULL,
   date_finished DATE
