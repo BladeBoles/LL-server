@@ -37,4 +37,17 @@ VALUES
     'https://www.groovytunes.com/sleep',
     'Six hours isn''t enough for anyone!',
     2
-);
+),
+(
+    'Whale Mating Sounds, vol 5',
+    900,
+    true,
+    'other',
+    '02-11-20',
+    '02-12-20',
+    'Humpback Harry',
+    'https://www.savethewhales.com',
+    'My favorite part: "oooOOOOOouuuaaauuoOOOu eeeeiiii" ',
+    1
+)
+;
