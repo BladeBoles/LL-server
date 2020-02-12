@@ -32,7 +32,7 @@ lexicalRouter
       })
       .catch(next);
   });
-//Probably need to move this to /:currently_id
+
 lexicalRouter
   .route('/:currently_id')
   .delete((req, res, next) => {
