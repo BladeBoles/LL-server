@@ -1,12 +1,24 @@
-INSERT INTO profiles (user_login, user_password)
+INSERT INTO profiles (firstname, lastname, email, user_login, user_password, weekly_hours, progress, days_left)
 VALUES
 (
+    'Fred',
+    'Smith',
+    'fred.smith@aol.com',
     'fred',
-    'password1'
+    'password1',
+    10,
+    2,
+    3
 ),
 (
+    'Billy',
+    'TheBlueRanger',
+    'rueblanger@gmail.com',
     'user2',
-    'password2'
+    'password2',
+    5,
+    0.3,
+    6
 );
 
 INSERT INTO currently_reading (media_name, current_progress, finished, media_type, date_started, date_finished, author, media_url, notes, library_owner)
