@@ -37,6 +37,12 @@ const LexicalService = {
       .then(rows => {
         return rows[0];
       });
+  },
+
+  updateUser(knex, user_login, userToUpdate) {
+    return knex('profiles')
+      .where( { user_login })
+      .update(userToUpdate);
   }
 };
 

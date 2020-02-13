@@ -7,7 +7,10 @@ CREATE TABLE profiles (
   lastname text not null,
   email text not null,
   user_login TEXT not null,
-  user_password TEXT not null
+  user_password TEXT not null,
+  weekly_hours INTEGER,
+  progress INTEGER,
+  days_left INTEGER
 );
 
 CREATE TABLE currently_reading (

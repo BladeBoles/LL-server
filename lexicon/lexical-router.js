@@ -75,10 +75,35 @@ lexicalRouter
       user_login
     )
       .then(items => {
-        console.log(items)
+        console.log(items);
         res.send(items);
       })
       .catch(next);
+  })
+
+  .patch(jsonParser, (req, res, next) => {
+    const { weekly_hours } = req.body;
+    const profileToUpdate = { weekly_hours };
+    const numberOfValues = Object.values(profileToUpdate).filter(Boolean).length;
+
+    if(numberOfValues === 0) {
+      return res.status(400).json({
+        error: {
+          message: `Request body must contain weekly_hours`
+        }
+      });
+    }
+
+    LexicalService.updateUser(
+      req.app.get('db'),
+      req.params.user_login,
+      profileToUpdate
+    )
+      .then(numRowsAffected => {
+        res.status(204).end();
+      })
+      .catch(next);
+
   });
 
 
