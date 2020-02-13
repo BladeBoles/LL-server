@@ -67,15 +67,16 @@ lexicalRouter
   });
 
 lexicalRouter
-  .route('/login')
+  .route('/login/:user_login')
   .get((req, res, next) => {
-    const user_login = "fred";
+    const user_login = req.params;
     LexicalService.getUserInfo(
       req.app.get('db'),
       user_login
     )
       .then(items => {
-        res.json(items);
+        console.log(items)
+        res.send(items);
       })
       .catch(next);
   });
