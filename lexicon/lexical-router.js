@@ -66,5 +66,19 @@ lexicalRouter
       .catch(next);
   });
 
+lexicalRouter
+  .route('/login')
+  .get((req, res, next) => {
+    const user_login = "fred";
+    LexicalService.getUserInfo(
+      req.app.get('db'),
+      user_login
+    )
+      .then(items => {
+        res.json(items);
+      })
+      .catch(next);
+  });
+
 
 module.exports = lexicalRouter;
