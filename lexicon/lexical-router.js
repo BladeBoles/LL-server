@@ -81,8 +81,8 @@ lexicalRouter
   })
 
   .patch(jsonParser, (req, res, next) => {
-    const { weekly_hours } = req.body;
-    const profileToUpdate = { weekly_hours };
+    const { weekly_hours, progress, days_left } = req.body;
+    const profileToUpdate = { weekly_hours, progress, days_left };
     const numberOfValues = Object.values(profileToUpdate).filter(Boolean).length;
 
     if(numberOfValues === 0) {
