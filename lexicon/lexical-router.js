@@ -75,7 +75,6 @@ lexicalRouter
       user_login
     )
       .then(items => {
-        console.log(items);
         res.send(items);
       })
       .catch(next);

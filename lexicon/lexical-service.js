@@ -12,7 +12,6 @@ const LexicalService = {
   },
 
   addNewCurrentlyReading(knex, newItem) {
-    console.log(newItem);
     return knex
       .insert(newItem)
       .into('currently_reading')
@@ -29,7 +28,6 @@ const LexicalService = {
   },
 
   addNewUser(knex, newUser) {
-    console.log(newUser);
     return knex
       .insert(newUser)
       .into('profiles')
