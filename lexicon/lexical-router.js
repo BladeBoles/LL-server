@@ -45,8 +45,24 @@ lexicalRouter
         res.status(204).end();
       })
       .catch(next);
-  });
+  })
+  .patch(jsonParser,(req, res, next) => {
+    const { currently_id } = req.params;
+    const { current_progress, date_started, media_name, media_type, author='', media_url='', notes='', finished } = req.body;  
 
+    const updatedItem = { current_progress, date_started, media_name, media_type, author, media_url, notes, finished };
+
+    LexicalService.updateItem(
+      req.app.get('db'),
+      currently_id,
+      updatedItem
+    )
+      .then(numRowsAffected => {
+        res.status(204).end();
+      })
+      .catch(next);
+  });
+  
 lexicalRouter
   .route('/new-user')
   .post(jsonParser, (req, res, next) => {
