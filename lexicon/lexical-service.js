@@ -27,6 +27,13 @@ const LexicalService = {
       .delete();
   },
 
+  updateItem(knex, id, updatedItem) {
+    console.log(id, updatedItem);
+    return knex('currently_reading')
+      .where({ id })
+      .update(updatedItem);
+  },
+
   addNewUser(knex, newUser) {
     return knex
       .insert(newUser)
@@ -38,6 +45,7 @@ const LexicalService = {
   },
 
   updateUser(knex, user_login, userToUpdate) {
+    console.log(user_login, userToUpdate)
     return knex('profiles')
       .where( { user_login })
       .update(userToUpdate);
