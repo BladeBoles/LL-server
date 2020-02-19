@@ -1,9 +1,6 @@
-INSERT INTO profiles (firstname, lastname, email, user_login, user_password, weekly_hours, progress, days_left)
+INSERT INTO profiles (user_login, user_password, weekly_hours, progress, days_left)
 VALUES
 (
-    'Fred',
-    'Smith',
-    'fred.smith@aol.com',
     'fred',
     'password1',
     10,
@@ -11,9 +8,6 @@ VALUES
     3
 ),
 (
-    'Billy',
-    'TheBlueRanger',
-    'rueblanger@gmail.com',
     'user2',
     'password2',
     5,
