@@ -66,9 +66,9 @@ lexicalRouter
 lexicalRouter
   .route('/new-user')
   .post(jsonParser, (req, res, next) => {
-    const { firstname, lastname, email, user_login, user_password } = req.body;  
+    const { user_login, user_password } = req.body;  
 
-    const newUser = { firstname, lastname, email, user_login, user_password };
+    const newUser = { user_login, user_password };
 
     LexicalService.addNewUser(
       req.app.get('db'),
