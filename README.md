@@ -1,26 +1,36 @@
-# Express Boilerplate!
+# Lexical Library
+## *Read All the Things!*
 
-This is a boilerplate project used for starting new projects!
+__Lexical Library is an app for tracking and storing your reading habits.__
 
-## Set up
+### [Live App](https://lexical-library.bladeboles.now.sh/) 
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+This is the back-end documentation.  As such it does not include screenshots or explanations of the client side.  If you would like to check those out, visit the [Client README](https://github.com/BladeBoles/LL-client/tree/testing1)
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
 
-## Scripts
+---
 
-Start the application `npm start`
+### Current Features Include:
 
-Start nodemon for the application `npm run dev`
+* CRUD items you are reading in "Currently Reading"
+* CRUD items you have already read in "My Library"
+* CRUD time-based reading goals for yourself.  The app calculates what you need to read each day to reach your goal!
+* Simple user accounts to store your libraries
 
-Run the tests `npm test`
 
-## Deploying
+#### Upcoming Features
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+Lexical Library is a work in progress.  Here are some future features to expect:
+
+* Items in "My Library" can be filtered and sorted by date completed and type of media
+* Better time/date formatting, with the ability to choose units of time measure (minutes/hours/days/weeks)
+* Stopwatch within each item that automatically updates your current progress
+* Custom reading lists
+* Share goals and reading lists with friends!
+
+
+#### Tech Stack
+* Front End:  React, HTML5 & CSS3 (vanilla), JavaScript (ES6+)
+* Back End: Node, PostgreSQL, Express
+* Testing/Misc: npm, Mocha, Chai, Jest, Enzyme, SuperTest
+* Deployment: Zeit (front-end), Heroku (api & database)
