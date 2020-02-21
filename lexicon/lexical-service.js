@@ -45,7 +45,7 @@ const LexicalService = {
   },
 
   updateUser(knex, user_login, userToUpdate) {
-    console.log(user_login, userToUpdate)
+    console.log(user_login, userToUpdate);
     return knex('profiles')
       .where( { user_login })
       .update(userToUpdate);
