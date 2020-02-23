@@ -18,14 +18,22 @@ VALUES
 INSERT INTO currently_reading (media_name, current_progress, finished, media_type, date_started, date_finished, author, media_url, notes, library_owner)
 VALUES
 (
-    'Moby Dick', 360, false, 'Book', '02-03-20', null, 'Herman Melville', 'https://en.wikipedia.org/wiki/Moby-Dick', 'A real whale of a tale.', 1
+    'Moby Dick', 
+    360, 
+    false,
+    'Book', 
+    '2020-02-03', 
+    null, 
+    'Herman Melville', 
+    'https://en.wikipedia.org/wiki/Moby-Dick', 
+    'A real whale of a tale.', 1
 ),
 (
     'Little Women',
     180,
     false,
     'Audiobook',
-    '10-31-19',
+    '2019-10-31',
     null,
     'Louisa May Alcott',
     'https://en.wikipedia.org/wiki/Little-Women',
@@ -37,7 +45,7 @@ VALUES
     15,
     false,
     'Article',
-    '02-09-20',
+    '2020-02-09',
     null,
     'Willie Nelson',
     'https://www.groovytunes.com/sleep',
@@ -49,8 +57,8 @@ VALUES
     900,
     true,
     'other',
-    '02-11-20',
-    '02-12-20',
+    '2020-02-11',
+    '2020-02-12',
     'Humpback Harry',
     'https://www.savethewhales.com',
     'My favorite part: "oooOOOOOouuuaaauuoOOOu eeeeiiii" ',

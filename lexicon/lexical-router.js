@@ -17,9 +17,9 @@ lexicalRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    const { current_progress = 50, date_started, media_name, media_type, author='', media_url='', notes='', finished, library_owner } = req.body;  
+    const { current_progress = 50, date_started, date_finished, media_name, media_type, author='', media_url='', notes='', finished, library_owner } = req.body;  
 
-    const newItem = { current_progress, date_started, media_name, media_type, author, media_url, notes, finished, library_owner };
+    const newItem = { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished, library_owner };
 
     LexicalService.addNewCurrentlyReading(
       req.app.get('db'),
@@ -48,9 +48,9 @@ lexicalRouter
   })
   .patch(jsonParser,(req, res, next) => {
     const { currently_id } = req.params;
-    const { current_progress, date_started, media_name, media_type, author, media_url, notes, finished } = req.body;  
+    const { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished } = req.body;  
 
-    const updatedItem = { current_progress, date_started, media_name, media_type, author, media_url, notes, finished };
+    const updatedItem = { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished };
 
     LexicalService.updateItem(
       req.app.get('db'),
