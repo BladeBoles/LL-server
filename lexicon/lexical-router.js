@@ -48,7 +48,7 @@ lexicalRouter
   })
   .patch(jsonParser,(req, res, next) => {
     const { currently_id } = req.params;
-    const { current_progress, date_started, media_name, media_type, author='', media_url='', notes='', finished } = req.body;  
+    const { current_progress, date_started, media_name, media_type, author, media_url, notes, finished } = req.body;  
 
     const updatedItem = { current_progress, date_started, media_name, media_type, author, media_url, notes, finished };
 
