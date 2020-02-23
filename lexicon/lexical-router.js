@@ -17,7 +17,7 @@ lexicalRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    const { current_progress = 50, date_started, date_finished, media_name, media_type, author='', media_url='', notes='', finished, library_owner } = req.body;  
+    const { current_progress = 50, date_started, date_finished=null, media_name, media_type, author='', media_url='', notes='', finished, library_owner } = req.body;  
 
     const newItem = { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished, library_owner };
 
@@ -48,7 +48,10 @@ lexicalRouter
   })
   .patch(jsonParser,(req, res, next) => {
     const { currently_id } = req.params;
-    const { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished } = req.body;  
+    let { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished } = req.body;  
+    if (date_finished === '') {
+      date_finished = null
+    }
 
     const updatedItem = { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished };
 
