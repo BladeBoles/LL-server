@@ -3,8 +3,11 @@ const LexicalService = {
     return knex.select('*').from('currently_reading');
   },
 
-  getUserInfo(knex, userLogin) {
-    return knex.select('*').from('profiles').where({user_login: userLogin.user_login}).first();
+  getUserInfo(knex, userLogin, userPassword) {
+    return knex.select('*').from('profiles').where({
+      user_login: userLogin.user_login,
+      user_password: userPassword.user_password
+    }).first();
   },
 
   getById(knex, id) {

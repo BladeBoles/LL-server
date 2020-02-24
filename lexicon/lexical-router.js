@@ -91,13 +91,22 @@ lexicalRouter
 
 lexicalRouter
   .route('/login/:user_login')
-  .get((req, res, next) => {
+  .post(jsonParser, (req, res, next) => {
     const user_login = req.params;
+    const user_password = req.body;
     LexicalService.getUserInfo(
       req.app.get('db'),
-      user_login
+      user_login,
+      user_password
     )
       .then(items => {
+        if (items === undefined) {
+          return res.status(400).json({
+            error: {
+              message: `Please enter a valid username and password!`
+            }
+          })
+        }
         res.send(items);
       })
       .catch(next);
