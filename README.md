@@ -10,6 +10,8 @@ This is the back-end documentation.  As such it does not include screenshots or 
 
 ---
 
+## API Endpoint Information
+
 **Currently Reading/My Library**
 ----
   Returns entire database of items
