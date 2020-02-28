@@ -4,6 +4,7 @@ const xss = require('xss');
 const LexicalService = require('./lexical-service');
 const lexicalRouter = express.Router();
 const jsonParser = express.json();
+const { requireAuth } = require('../src/middleware/basic-auth')
 
 lexicalRouter
   .route('/currently-reading')
@@ -91,6 +92,7 @@ lexicalRouter
 
 lexicalRouter
   .route('/login/:user_login')
+  .all(requireAuth)
   .post(jsonParser, (req, res, next) => {
     const user_login = req.params;
     const user_password = req.body;
