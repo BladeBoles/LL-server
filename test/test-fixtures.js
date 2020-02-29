@@ -15,7 +15,7 @@ function makeUserArray() {
       progress: 1, 
       days_left: 1
     }
-  ]
+  ];
 }
 
 function makeLibraryArray() {
@@ -47,10 +47,10 @@ function makeLibraryArray() {
       notes: 'Good ole book',
       library_owner: null
     }
-  ]
+  ];
 }
 
 module.exports = {
   makeUserArray,
   makeLibraryArray
-}
+};
