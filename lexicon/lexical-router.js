@@ -4,7 +4,7 @@ const xss = require('xss');
 const LexicalService = require('./lexical-service');
 const lexicalRouter = express.Router();
 const jsonParser = express.json();
-const { requireAuth } = require('../src/middleware/basic-auth')
+const { requireAuth } = require('../src/middleware/basic-auth');
 
 lexicalRouter
   .route('/currently-reading')
@@ -21,7 +21,7 @@ lexicalRouter
     let { current_progress = 50, date_started, date_finished, media_name, media_type, author='', media_url='', notes='', finished, library_owner } = req.body;  
 
     if (date_finished === '') {
-      date_finished = null
+      date_finished = null;
     }
 
     const newItem = { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished, library_owner };
@@ -55,7 +55,7 @@ lexicalRouter
     const { currently_id } = req.params;
     let { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished } = req.body;  
     if (date_finished === '') {
-      date_finished = null
+      date_finished = null;
     }
 
     const updatedItem = { current_progress, date_started, date_finished, media_name, media_type, author, media_url, notes, finished };
@@ -92,8 +92,14 @@ lexicalRouter
 
 lexicalRouter
   .route('/login/:user_login')
-  .all(requireAuth)
-  .post(jsonParser, (req, res, next) => {
+  .post(requireAuth, jsonParser, (req, res, next) => {
+    const authToken = req.get('Authorization') || '';
+    const basicToken = authToken.slice('basic '.length, authToken.length);
+    const [tokenUserName, tokenPassword] = Buffer
+      .from(basicToken, 'base64')
+      .toString()
+      .split(':');
+
     const user_login = req.params;
     const user_password = req.body;
     LexicalService.getUserInfo(
@@ -107,7 +113,7 @@ lexicalRouter
             error: {
               message: `Please enter a valid username and password!`
             }
-          })
+          });
         }
         res.send(items);
       })
